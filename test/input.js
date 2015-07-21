@@ -165,64 +165,97 @@ describe('input', function () {
 
     describe('valid value', function () {
         describe('without any pattern', function () {
-
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name')).to.be.equal('jack');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', undefined, 'jackong')).to.be.equal('jack');
+                });
             });
 
         });
 
         describe('with regex pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', /^(jack|daisy)$/)).to.be.equal('jack');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', /^(jack|daisy)$/, 'jackong')).to.be.equal('jack');
+                });
             });
         });
 
         describe('with function pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', function (value) {
+                        return value === 'jack';
+                    })).to.be.equal('jack');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', function (value) {
+                        return value === 'jack';
+                    }, 'jackong')).to.be.equal('jack');
+                });
             });
         });
 
         describe('with object pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', {jack: 18, daisy: 19})).to.be.equal(18);
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', {jack: 18, daisy: 19}, 'jackong')).to.be.equal(18);
+                });
             });
         });
 
         describe('with array pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', ['jack', 'daisy'])).to.be.equal('jack');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', ['jack', 'daisy'], 'jackong')).to.be.equal('jack');
+                });
             });
         });
 
         describe('with basic-type pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', 'jack')).to.be.equal('jack');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the value', function () {
+                    expect(input(data, 'name', 'jack', 'jackong')).to.be.equal('jack');
+                });
             });
         });
     });
