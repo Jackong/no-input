@@ -112,12 +112,19 @@ describe('input', function () {
         });
 
         describe('with object pattern', function () {
+            var data = {status: 'unknown'};
             describe('and default', function () {
-
+                it('should throw error', function () {
+                    expect(function () {
+                        input(data, 'status', {normal: 1, invalid: 2});
+                    }).to.throw(input.InvalidInputError, 'Invalid input status');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the default', function () {
+                    expect(input(data, 'status', {normal: 1, invalid: 2}, 1)).to.be.equal(1);
+                });
             });
         });
 
