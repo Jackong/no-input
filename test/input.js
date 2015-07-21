@@ -36,7 +36,12 @@ describe('input', function () {
             });
 
             describe('but default function', function () {
-
+                it('should get the default value', function () {
+                    var data = {};
+                    expect(input(data, 'name', undefined, function () {
+                        return 'jackong';
+                    })).to.be.equal('jackong');
+                });
             });
 
             describe('but custom error handler', function () {
