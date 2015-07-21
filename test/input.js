@@ -91,12 +91,23 @@ describe('input', function () {
         });
 
         describe('with function pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should throw error', function () {
+                    expect(function () {
+                        input(data, 'name', function (value) {
+                            return value === 'jackong';
+                        });
+                    }).to.throw(input.InvalidInputError, 'Invalid input name');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the default', function () {
+                    expect(input(data, 'name', function (value) {
+                        return value === 'jackong';
+                    }, 'daisy')).to.be.equal('daisy');
+                });
             });
         });
 
