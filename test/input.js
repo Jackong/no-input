@@ -73,13 +73,20 @@ describe('input', function () {
             });
         });
 
-        describe('with regex pattern', function () {
+        describe('with regexp pattern', function () {
+            var data = {name: 'jack'};
             describe('and default', function () {
-
+                it('should throw error', function () {
+                    expect(function () {
+                        input(data, 'name', /^(jackong|daisy)$/);
+                    }).to.throw(input.InvalidInputError, 'Invalid input name');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the default', function () {
+                    expect(input(data, 'name', /^(jackong|daisy)$/, 'jackong')).to.be.equal('jackong');
+                });
             });
         });
 
