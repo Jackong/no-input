@@ -64,7 +64,12 @@ describe('input', function () {
             });
 
             describe('but special error', function () {
-
+                it('should throw custom error', function () {
+                    var data = {};
+                    expect(function () {
+                        input(data, 'name', undefined, undefined, new input.InvalidInputError('invalid input'));
+                    }).to.throw(input.InvalidInputError, 'invalid input');
+                });
             });
         });
 
