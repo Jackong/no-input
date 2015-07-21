@@ -1,6 +1,6 @@
 {
   "name": "no-input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A useful tool to validate any input.",
   "main": "index.js",
   "scripts": {
