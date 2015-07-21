@@ -14,13 +14,13 @@ describe('input', function () {
                     var data = {};
                     expect(function () {
                         input(data, 'name');
-                    }).to.throw('Invalid input name');
+                    }).to.throw(input.InvalidInputError, 'Invalid input name');
                 });
 
                 it('should throw error when data is undefined', function () {
                     expect(function () {
                         input(undefined, 'name');
-                    }).to.throw('Invalid input name');
+                    }).to.throw(input.InvalidInputError, 'Invalid input name');
                 });
             });
 
@@ -45,7 +45,22 @@ describe('input', function () {
             });
 
             describe('but custom error handler', function () {
+                var originError = input.error;
+                before(function () {
+                    input.error = function (name) {
+                        return new input.InvalidInputError('Invalid data input ' + name);
+                    };
+                });
+                after(function () {
+                    input.error = originError;
+                });
 
+                it('should throw custom error', function () {
+                    var data = {};
+                    expect(function () {
+                        input(data, 'name');
+                    }).to.throw(input.InvalidInputError, 'Invalid data input name');
+                });
             });
 
             describe('but special error', function () {
