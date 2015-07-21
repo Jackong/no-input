@@ -129,12 +129,19 @@ describe('input', function () {
         });
 
         describe('with array pattern', function () {
+            var data = {type: 'pig'};
             describe('and default', function () {
-
+                it('should throw error', function () {
+                    expect(function () {
+                        input(data, 'type', ['cat', 'dog']);
+                    }).to.throw(input.InvalidInputError, 'Invalid input type');
+                });
             });
 
             describe('but default', function () {
-
+                it('should get the default', function () {
+                    expect(input(data, 'type', ['cat', 'dog'], 'pig')).to.be.equal('pig');
+                });
             });
         });
 
