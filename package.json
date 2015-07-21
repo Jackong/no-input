@@ -1,0 +1,32 @@
+{
+  "name": "no-input",
+  "version": "1.0.0",
+  "description": "A useful tool to validate any input.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jackong/no-input.git"
+  },
+  "keywords": [
+    "validate",
+    "input",
+    "params",
+    "arguments"
+  ],
+  "author": "jackong <jackongc@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jackong/no-input/issues"
+  },
+  "homepage": "https://github.com/Jackong/no-input",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
