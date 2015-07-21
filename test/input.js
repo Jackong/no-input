@@ -47,12 +47,12 @@ describe('input', function () {
             describe('but custom error handler', function () {
                 var originError = input.error;
                 before(function () {
-                    input.error = function (name) {
+                    input.onError(function (name) {
                         return new input.InvalidInputError('Invalid data input ' + name);
-                    };
+                    })
                 });
                 after(function () {
-                    input.error = originError;
+                    input.onError(originError);
                 });
 
                 it('should throw custom error', function () {
