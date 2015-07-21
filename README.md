@@ -52,3 +52,6 @@ var value = input(data, 'type', /^(cat|dog)$/, 'pig', new Error('invalid type'))
 // ...
 
 ```
+
+# Licences
+ [MIT](LICENSE)
