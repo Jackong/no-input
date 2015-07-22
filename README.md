@@ -27,10 +27,10 @@ A useful tool to validate any input.
 * Options
 
 ```js
-input(data, name, pattern, default, error);
+input(data, nameOrOptions[, pattern, default, error]);
 ```
 > * `data` {Object} *required* input data you want to validate
-> * `name` {String} *required* key may be exist in `data`
+> * `nameOrOptions` {String|Object} *required* key may be exist in `data` OR options with `name`, `pattern`, `default` and `error` 
 > * `pattern` {RegExp|Array|Function|Object|String...} *optional* validator
 > * `default` {Mixed} *optional* default value when invalid (Function will get the return value)
 > * `error` {Error} *optional* special error to throw
@@ -48,6 +48,8 @@ input.error = function(name) {
 ```js
 var data = {type: 'cat'};
 var value = input(data, 'type', /^(cat|dog)$/, 'pig', new Error('invalid type'));
+//OR
+var value = input(data, {name: 'type', pattern: ['cat', 'dog'], default: 'pig', error: new Error('invalid type')]};
 // The following code will not be executed, if the value is invalid.
 // ...
 

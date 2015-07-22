@@ -161,6 +161,23 @@ describe('input', function () {
                 });
             });
         });
+
+        describe('with object argument', function () {
+            var data = {type: 'pig'};
+            describe('with default', function () {
+                it('should throw error', function () {
+                    expect(function () {
+                        input(data, {name: 'type', pattern: /^(cat|dog)$/});
+                    }).to.throw(input.InvalidInputError, 'Invalid input type');
+                });
+            });
+
+            describe('without default', function () {
+                it('should get the default', function () {
+                    expect(input(data, {name: 'type', pattern: /^(cat|dog)$/, default: 'pig'})).to.be.equal('pig');
+                });
+            });
+        });
     });
 
     describe('valid value', function () {
